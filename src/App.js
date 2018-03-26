@@ -1,19 +1,27 @@
 import React, { Component } from 'react';
 import Block from './components/block/block'
 import './App.css';
+import userdata from './content.json';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      frosty: "Learning passing state with props",
-      mosty: "Giants"
+      users: [],
+      isLoading: true
     }
   }
+
+  componentDidMount(){
+    this.setState({users: userdata, isLoading: false}); 
+    console.log(this.state.isLoading);  
+  }
+
   render() {
-    const {frosty, mosty} = this.state;
+    console.log(this.state.isLoading);  
+    const {users, isLoading} = this.state;
     return (
-      <Block frosty={frosty} mosty={mosty}></Block>
+      <Block users={users} loading={isLoading}></Block>
     );
   }
 }

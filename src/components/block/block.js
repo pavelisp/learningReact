@@ -3,8 +3,11 @@ import './block.css';
 
 class Block extends Component {
     render(){
-        const {frosty, mosty} = this.props;
-        return <div className="frosty">{mosty} {frosty}</div>
+        const {users, loading} = this.props;
+        return loading ? <p>Loading...</p>
+        : <ul className="frosty">{users.map(user => {
+            return <li key={user.id}>{user.name}</li>;
+           })}</ul>
     } 
 }
 
